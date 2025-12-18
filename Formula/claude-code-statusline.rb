@@ -25,8 +25,8 @@ class ClaudeCodeStatusline < Formula
       exec "#{libexec}/statusline.sh" "$@"
     EOS
 
-    # Install config template
-    (share/"claude-code-statusline").install "Config.toml"
+    # Install config template from examples directory
+    (share/"claude-code-statusline").install "examples/Config.toml"
   end
 
   def post_install
