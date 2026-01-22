@@ -41,15 +41,17 @@ class ClaudeCodeStatusline < Formula
       ohai "Created default config at #{user_config}"
     end
 
-    # Copy version file (always update to match installed version)
+    # Copy version file (best effort - may fail if file has macOS provenance attrs)
     version_file = config_dir/"version.txt"
     if (libexec/"version.txt").exist?
-      if version_file.exist?
-        # Strip macOS extended attributes and remove existing file
-        system "xattr", "-c", version_file.to_s
-        system "rm", "-f", version_file.to_s
+      begin
+        version_file.delete if version_file.exist?
+        cp libexec/"version.txt", version_file
+      rescue Errno::EPERM
+        # File has macOS security attributes preventing modification
+        # This is fine - version is also available via: brew info claude-code-statusline
+        ohai "Note: Could not update version.txt (macOS security). This is harmless."
       end
-      cp libexec/"version.txt", version_file
     end
   end
 
