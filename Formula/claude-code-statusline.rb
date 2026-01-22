@@ -41,9 +41,9 @@ class ClaudeCodeStatusline < Formula
       ohai "Created default config at #{user_config}"
     end
 
-    # Copy version file
+    # Copy version file (always update to match installed version)
     version_file = config_dir/"version.txt"
-    (libexec/"version.txt").cp(version_file) if (libexec/"version.txt").exist?
+    cp libexec/"version.txt", version_file if (libexec/"version.txt").exist?
   end
 
   def caveats
