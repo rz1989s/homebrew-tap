@@ -44,7 +44,11 @@ class ClaudeCodeStatusline < Formula
     # Copy version file (always update to match installed version)
     version_file = config_dir/"version.txt"
     if (libexec/"version.txt").exist?
-      version_file.delete if version_file.exist?
+      if version_file.exist?
+        # Strip macOS extended attributes and remove existing file
+        system "xattr", "-c", version_file.to_s
+        system "rm", "-f", version_file.to_s
+      end
       cp libexec/"version.txt", version_file
     end
   end
