@@ -43,7 +43,10 @@ class ClaudeCodeStatusline < Formula
 
     # Copy version file (always update to match installed version)
     version_file = config_dir/"version.txt"
-    cp libexec/"version.txt", version_file if (libexec/"version.txt").exist?
+    if (libexec/"version.txt").exist?
+      version_file.delete if version_file.exist?
+      cp libexec/"version.txt", version_file
+    end
   end
 
   def caveats
