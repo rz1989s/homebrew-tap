@@ -7,8 +7,8 @@
 class ClaudeCodeStatusline < Formula
   desc "Enhanced statusline for Claude Code with themes, cost tracking, and prayer times"
   homepage "https://github.com/rz1989s/claude-code-statusline"
-  url "https://github.com/rz1989s/claude-code-statusline/archive/refs/tags/v2.24.11.tar.gz"
-  sha256 "0b7b02127627c99a1a7e7b2c0bc354076975d122e25ff632125499591a6ca9c1"
+  url "https://github.com/rz1989s/claude-code-statusline/archive/refs/tags/v2.24.13.tar.gz"
+  sha256 "4912378081c67a734913d06b9a93ece9d6842c99263b3694a4a98a2bfd87ac3d"
   license "MIT"
   head "https://github.com/rz1989s/claude-code-statusline.git", branch: "main"
 
